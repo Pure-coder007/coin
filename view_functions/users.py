@@ -23,6 +23,11 @@ def bitcoin_chart():
     return render_template('bitcoin_chart.html')
 
 
+@user.route('/user', methods=['GET', 'POST'])
+def user_dash():
+    return render_template('user.html')
+
+
 @user.route('/blog', methods=['GET', 'POST'])
 def blog():
     return render_template('blog.html')
