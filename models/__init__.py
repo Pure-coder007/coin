@@ -2,6 +2,7 @@ from extensions import db
 from datetime import datetime, timedelta
 import uuid
 from passlib.hash import pbkdf2_sha256 as sha256
+from flask_login import UserMixin
 import random
 import re
 
@@ -15,7 +16,7 @@ def hexid():
     return uuid.uuid4().hex
 
 
-class Users(db.Model):
+class Users(db.Model, UserMixin):
     __tablename__ = "users"
     id = db.Column(db.String(50), primary_key=True, default=hexid)
     fullname = db.Column(db.String(100), nullable=False)
@@ -23,7 +24,7 @@ class Users(db.Model):
     phone = db.Column(db.String(100), nullable=False, unique=True)
     dob = db.Column(db.Date, nullable=False)
     address = db.Column(db.String(100), nullable=False)
-    message = db.Column(db.Text, nullable=False)
+    message = db.Column(db.Text, nullable=True)
     show_message = db.Column(db.Boolean, default=False)
     occupation = db.Column(db.String(100), nullable=False)
     country = db.Column(db.String(100), nullable=False)
@@ -55,7 +56,7 @@ class Users(db.Model):
         return re.match(r"[^@]+@[^@]+\.[^@]+", email)
 
 
-class Admins(db.Model):
+class Admins(db.Model, UserMixin):
     __tablename__ = "admins"
     id = db.Column(db.String(50), primary_key=True, default=hexid)
     fullname = db.Column(db.String(100), nullable=False)
