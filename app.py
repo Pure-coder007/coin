@@ -93,5 +93,29 @@ def reset_password():
 
 
 
+@app.route('/user', methods=['GET', 'POST'])
+def user():
+    return render_template('user.html')
+
+
+@app.route('/add_funds', methods=['GET', 'POST'])
+def add_funds():
+    return render_template('add_funds.html')
+
+
+@app.route('/profile_page', methods=['GET', 'POST'])
+def profile_page():
+    return render_template('profile_page.html')
+
+
+@app.route('/update_mobile', methods=['GET', 'POST'])
+def update_mobile():
+    return render_template('update_mobile.html')
+
+
+@app.route('/withdrawal', methods=['GET', 'POST'])
+def withdrawal():
+    return render_template('withdrawal.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
