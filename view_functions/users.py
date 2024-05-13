@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+from flask_login import login_required, current_user
 
 user = Blueprint("users", __name__)
 
@@ -24,6 +25,7 @@ def bitcoin_chart():
 
 
 @user.route('/user', methods=['GET', 'POST'])
+@login_required
 def user_dash():
     return render_template('user.html')
 
@@ -81,3 +83,23 @@ def contact():
 @user.route('/reset_password', methods=['GET', 'POST'])
 def reset_password():
     return render_template('reset_password.html')
+
+
+@user.route('/add_funds', methods=['GET', 'POST'])
+def add_funds():
+    return render_template('add_funds.html')
+
+
+@user.route('/withdrawal', methods=['GET', 'POST'])
+def withdrawal():
+    return render_template('withdrawal.html')
+
+
+@user.route('/profile_page', methods=['GET', 'POST'])
+def profile_page():
+    return render_template('profile_page.html')
+
+
+@user.route('/update_mobile', methods=['GET', 'POST'])
+def update_mobile():
+    return render_template('update_mobile.html')
