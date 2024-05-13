@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="author" content="Bitnovia Coins Invest DevOps" />
-        
+
     <meta
       name="keywords"
       content="bitcoin, bitcoin investment, crypto investment, blockchain, cryptocurrency, crypto trading, altcoin, invest bitcoin, invest crypto, crypto investment platform, bitcoin investment, platform, bitcoin price, bitcoin news, bitcoin price chart, cryptocurrency trading"
@@ -37,7 +37,7 @@
 	<!-- Toastr Notifications - EXTERNAL CSS -->
 	<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" /> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+
   </head>
 
   <body style="color: #000">
@@ -59,7 +59,7 @@
           <div class="main-menu-wrapper bg-transparent rounded-0 p-0">
               <div class="row align-items-center">
                   <div class="col-lg-2">
-                      <a href="{{ url_for('index')}}" class="main-logo">
+                      <a href="{{ url_for('users.index')}}" class="main-logo">
                           <img class="sticky-logo-hide" src="{{ url_for('static', filename='imagess/logo-white.png')}}" alt="logo">
                           <img class="sticky-logo-show" src="{{ url_for('static', filename='imagess/logo-black.png')}}" alt="logo">
                       </a>
@@ -71,8 +71,8 @@
                                   <li>
                                       <a href="#">home <i class="fa fa-angle-down font-size-12" ></i></a>
                                       <ul class="drop-menu">
-                                          <li><a href="{{ url_for('index')}}"> Home </a></li>
-                    <li><a href="{{ url_for('bitcoin_chart')}}"> Bitcoin Chart </a></li>
+                                          <li><a href="{{ url_for('users.index')}}"> Home </a></li>
+                    <li><a href="{{ url_for('users.bitcoin_chart')}}"> Bitcoin Chart </a></li>
                                       </ul>
                                   </li>
                                   <li class="has-mega-menu">
@@ -81,23 +81,23 @@
                                           <ul class="row no-gutters">
                                               <li class="mega-menu-item col-lg-4">
                                                   <ul>
-                                                      <li><a href="{{ url_for('about')}}">about us</a></li>
-                                                      <li><a href="{{ url_for('service')}}">services</a></li>
-                          <li><a href="{{ url_for('investment_plan')}}"> Investment Plan </a></li>
+                                                      <li><a href="{{ url_for('users.about')}}">about us</a></li>
+                                                      <li><a href="{{ url_for('users.service')}}">services</a></li>
+                          <li><a href="{{ url_for('users.investment_plan')}}"> Investment Plan </a></li>
                                                   </ul>
                                               </li>
                                               <li class="mega-menu-item col-lg-4">
                                                   <ul>
-                                                      <li><a href="{{ url_for('terms_of_service')}}"> Terms of Services</a></li>
-                          <li><a href="{{ url_for('faq')}}">FAQ</a></li>
-                                                      <li><a href="{{ url_for('contact')}}">contact</a></li>
+                                                      <li><a href="{{ url_for('users.terms_of_service')}}"> Terms of Services</a></li>
+                          <li><a href="{{ url_for('users.faq')}}">FAQ</a></li>
+                                                      <li><a href="{{ url_for('users.contact')}}">contact</a></li>
                                                   </ul>
                                               </li>
                                               <li class="mega-menu-item col-lg-4">
                                                   <ul>
-                                                      <li><a href="{{ url_for('sign_up')}}"> Sign up</a></li>
-                                                      <li><a href="{{ url_for('login')}}"> Login</a></li>
-                                                     <li><a href="{{ url_for('reset_password')}}"> Reset password</a></li>
+                                                      <li><a href="{{ url_for('auth.sign_up')}}"> Sign up</a></li>
+                                                      <li><a href="{{ url_for('auth.login')}}"> Login</a></li>
+                                                     <li><a href="{{ url_for('auth.reset_password')}}"> Reset password</a></li>
                                                   </ul>
                                               </li>
                                           </ul>
@@ -106,21 +106,21 @@
                                   <li>
                                       <a href="#">team <i class="fa fa-angle-down font-size-12"></i></a>
                                       <ul class="drop-menu">
-                                          <li><a href="{{ url_for('team')}}"> team </a></li>
+                                          <li><a href="{{ url_for('users.team')}}"> team </a></li>
                                       </ul>
                                   </li>
                                   <li>
                                       <a href="#">blog <i class="fa fa-angle-down font-size-12"></i></a>
                                       <ul class="drop-menu">
-                                          <li><a href="{{ url_for('blog')}}"> blog </a></li>
+                                          <li><a href="{{ url_for('users.blog')}}"> blog </a></li>
                                       </ul>
                                   </li>
                               </ul>
                           </nav>
                           <div class="navbar-toolbar d-flex align-items-center">
                               <ul class="list-items list-items-white">
-                                  <li class="d-inline-block mr-2"><a href="{{ url_for('login')}}"> Login </a></li>
-                                  <li class="d-inline-block card hover-y" style="background: orange !important; border-radius: 50px;"><a href="{{ url_for('sign_up')}}" class="btn btn-sm text-white"> 
+                                  <li class="d-inline-block mr-2"><a href="{{ url_for('auth.login')}}"> Login </a></li>
+                                  <li class="d-inline-block card hover-y" style="background: orange !important; border-radius: 50px;"><a href="{{ url_for('auth.sign_up')}}" class="btn btn-sm text-white">
                 Sign Up </a></li>
                               </ul>
                               <div class="hamburger hamburger-white">
@@ -669,13 +669,13 @@
       <div class="row">
           <div class="col-lg-3 col-md-6">
               <div class="footer-item mb-5">
-                  <a href="{{ url_for('index')}}" class="d-block">
+                  <a href="{{ url_for('users.index')}}" class="d-block">
                       <img src="{{ url_for('static', filename='imagess/logo-black.png')}}" alt="logo">
                   </a>
                   <ul class="list-items pt-4">
-                      <li class="mb-3"><a href=""><i class="fa fa-envelope mr-1 font-size-14"></i> 
+                      <li class="mb-3"><a href=""><i class="fa fa-envelope mr-1 font-size-14"></i>
              hello@bitnoviacoinsinvest.com </a></li>
-                      <li class="mb-3"><i class="fa fa-map-marker-alt mr-1 font-size-14"></i> 
+                      <li class="mb-3"><i class="fa fa-map-marker-alt mr-1 font-size-14"></i>
               President Building, <br/> 37b Av. John F. Kennedy, <br/> 1855 Kirchberg, <br/> Luxembourg </li>
                       <li class="mb-3"><i class="fa fa-clock mr-1 font-size-14"></i> Mon-Sun </li>
                   </ul>
@@ -692,13 +692,13 @@
                   <h5 class="mb-3 font-weight-semi-bold">Company</h5>
                   <div class="title-shape border-bottom-0"><span></span></div>
                   <ul class="list-items list-items-hover pt-4">
-                      <li class="mb-2"><a href="{{ url_for('about')}}"> About </a></li>
-                      <li class="mb-2"><a href="{{ url_for('team')}}"> Team</a></li>
-                      <li class="mb-2"><a href="{{url_for('investment_plan')}}"> Investment Plan </a></li>
-      
-                      <li class="mb-2"><a href="{{ url_for('service')}}"> Service </a></li>
-                      <li class="mb-2"><a href="{{ url_for('contact')}}"> Contact </a></li>
-                      <li class="mb-2"><a href="{{ url_for('blog')}}"> Blog </a></li>
+                      <li class="mb-2"><a href="{{ url_for('users.about')}}"> About </a></li>
+                      <li class="mb-2"><a href="{{ url_for('users.team')}}"> Team</a></li>
+                      <li class="mb-2"><a href="{{url_for('users.investment_plan')}}"> Investment Plan </a></li>
+
+                      <li class="mb-2"><a href="{{ url_for('users.service')}}"> Service </a></li>
+                      <li class="mb-2"><a href="{{ url_for('users.contact')}}"> Contact </a></li>
+                      <li class="mb-2"><a href="{{ url_for('users.blog')}}"> Blog </a></li>
                   </ul>
               </div><!-- end footer-item -->
           </div><!-- end col-lg-3 -->
@@ -708,15 +708,15 @@
                   <div class="title-shape border-bottom-0"><span></span></div>
                   <ul class="list-items list-items-hover pt-4">
                       <li class="mb-2"><a href="#">Guide</a></li>
-                      <li class="mb-2"><a href="{{ url_for('faq')}}">Faq</a></li>
+                      <li class="mb-2"><a href="{{ url_for('users.faq')}}">Faq</a></li>
                       <li class="mb-2"><a href="#">Advertise</a></li>
                       <li class="mb-2"><a href="#">Help Center</a></li>
                       <li class="mb-2"><a href="#">Privacy Policy</a></li>
-                      <li class="mb-2"><a href="{{ url_for('terms_of_service')}}"> Terms of Services </a></li>
+                      <li class="mb-2"><a href="{{ url_for('users.terms_of_service')}}"> Terms of Services </a></li>
                   </ul>
               </div><!-- end footer-item -->
           </div><!-- end col-lg-3 -->
-    
+
       </div><!-- end row -->
   </div><!-- end container -->
   <hr class="border-top-gray my-4">
@@ -726,11 +726,11 @@
       <!-- Google Translate container -->
     <div id="google_translate_element"></div>
     <!-- end Google Translate container -->
-    
-          <p class="copy-desc" style="color: #000 !important;">Copyright &copy; 2024 Bitnovia Coins. All Rights Reserved. 
-        <a href="{{ url_for('terms_of_service')}}"> Terms of Services </a> | <a href="{{ url_for('faq')}}"> FAQ </a>
+
+          <p class="copy-desc" style="color: #000 !important;">Copyright &copy; 2024 Bitnovia Coins. All Rights Reserved.
+        <a href="{{ url_for('users.terms_of_service')}}"> Terms of Services </a> | <a href="{{ url_for('users.faq')}}"> FAQ </a>
     </p>
-    
+
     <div>
     <a href="https://www.cssf.lu/en/">
     <img src="{{ url_for('static', filename='imagess/cssf.png')}}" alt="" class="img-fluid mr-3 flex-shrink-0" style="width: 100px;">
