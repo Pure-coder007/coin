@@ -57,7 +57,7 @@
           <div class="main-menu-wrapper bg-transparent rounded-0 p-0">
             <div class="row align-items-center">
               <div class="col-lg-2">
-                <a href="{{ url_for('index') }}" class="main-logo">
+                <a href="{{ url_for('users.index') }}" class="main-logo">
                   <img
                     class="sticky-logo-hide"
                     src="{{ url_for('static', filename='imagess/logo-white.png') }}"
@@ -84,9 +84,9 @@
                           >home <i class="fa fa-angle-down font-size-12"></i
                         ></a>
                         <ul class="drop-menu">
-                          <li><a href="{{ url_for('index')}}"> Home </a></li>
+                          <li><a href="{{ url_for('users.index')}}"> Home </a></li>
                           <li>
-                            <a href="{{ url_for('bitcoin_chart')}}"> Bitcoin Chart </a>
+                            <a href="{{ url_for('users.bitcoin_chart')}}"> Bitcoin Chart </a>
                           </li>
                         </ul>
                       </li>
@@ -98,10 +98,10 @@
                           <ul class="row no-gutters">
                             <li class="mega-menu-item col-lg-4">
                               <ul>
-                                <li><a href="{{ url_for('about')}}">about us</a></li>
-                                <li><a href="{{ url_for('service')}}">services</a></li>
+                                <li><a href="{{ url_for('users.about')}}">about us</a></li>
+                                <li><a href="{{ url_for('users.service')}}">services</a></li>
                                 <li>
-                                  <a href="{{ url_for('investment_plan')}}">
+                                  <a href="{{ url_for('users.investment_plan')}}">
                                     Bitcoin Investment Plan
                                   </a>
                                 </li>
@@ -110,20 +110,20 @@
                             <li class="mega-menu-item col-lg-4">
                               <ul>
                                 <li>
-                                  <a href="{{ url_for('terms_of_service')}}">
+                                  <a href="{{ url_for('users.terms_of_service')}}">
                                     Terms of Services</a
                                   >
                                 </li>
-                                <li><a href="{{ url_for('faq')}}">FAQ</a></li>
-                                <li><a href="{{ url_for('contact')}}">contact</a></li>
+                                <li><a href="{{ url_for('users.faq')}}">FAQ</a></li>
+                                <li><a href="{{ url_for('users.contact')}}">contact</a></li>
                               </ul>
                             </li>
                             <li class="mega-menu-item col-lg-4">
                               <ul>
-                                <li><a href="{{ url_for('sign_up')}}"> Sign up</a></li>
-                                <li><a href="{{ url_for('login')}}"> Login</a></li>
+                                <li><a href="{{ url_for('auth.sign_up')}}"> Sign up</a></li>
+                                <li><a href="{{ url_for('auth.login')}}"> Login</a></li>
                                 <li>
-                                  <a href="{{ url_for('reset_password')}}">
+                                  <a href="{{ url_for('auth.reset_password')}}">
                                     Reset password</a
                                   >
                                 </li>
@@ -137,7 +137,7 @@
                           >team <i class="fa fa-angle-down font-size-12"></i
                         ></a>
                         <ul class="drop-menu">
-                          <li><a href="{{ url_for('team')}}"> team </a></li>
+                          <li><a href="{{ url_for('users.team')}}"> team </a></li>
                         </ul>
                       </li>
                       <li>
@@ -145,7 +145,7 @@
                           >blog <i class="fa fa-angle-down font-size-12"></i
                         ></a>
                         <ul class="drop-menu">
-                          <li><a href="{{ url_for('blog')}}"> blog </a></li>
+                          <li><a href="{{ url_for('users.blog')}}"> blog </a></li>
                         </ul>
                       </li>
                     </ul>
@@ -153,7 +153,7 @@
                   <div class="navbar-toolbar d-flex align-items-center">
                     <ul class="list-items list-items-white">
                       <li class="d-inline-block mr-2">
-                        <a href="{{ url_for('login')}}"> Login </a>
+                        <a href="{{ url_for('auth.login')}}"> Login </a>
                       </li>
                       <li
                         class="d-inline-block card hover-y"
@@ -162,7 +162,7 @@
                           border-radius: 50px;
                         "
                       >
-                        <a href="{{ url_for('sign_up')}}" class="btn btn-sm text-white">
+                        <a href="{{ url_for('auth.sign_up')}}" class="btn btn-sm text-white">
                           Sign Up
                         </a>
                       </li>
@@ -706,7 +706,7 @@
               <p class="pt-4 pb-5">
                 We're a tested and proven bitcoin investment platform.
               </p>
-              <a href="{{ url_for('sign_up')}}" class="btn btn-primary">
+              <a href="{{ url_for('auth.sign_up')}}" class="btn btn-primary">
                 Open an Investment Account Today
               </a>
             </div>
@@ -901,6 +901,7 @@
     <!-- ================================
        START TESTIMONIAL AREA
 ================================= -->
+{% extends 'layout.html' %}
 
     <!-- ================================
          END FOOTER AREA
@@ -956,14 +957,14 @@
               <h5 class="mb-3 font-weight-semi-bold">Company</h5>
               <div class="title-shape border-bottom-0"><span></span></div>
               <ul class="list-items list-items-hover pt-4">
-                <li class="mb-2"><a href="{{ url_for('about')}}"> About </a></li>
-                <li class="mb-2"><a href="{{ url_for('team')}}"> Team</a></li>
+                <li class="mb-2"><a href="{{ url_for('users.about')}}"> About </a></li>
+                <li class="mb-2"><a href="{{ url_for('users.team')}}"> Team</a></li>
                 <li class="mb-2">
-                  <a href="{{ url_for('investment_plan')}}"> Investment Plan </a>
+                  <a href="{{ url_for('users.investment_plan')}}"> Investment Plan </a>
                 </li>
-                <li class="mb-2"><a href="{{ url_for('service')}}"> Service </a></li>
-                <li class="mb-2"><a href="{{ url_for('contact')}}"> Contact </a></li>
-                <li class="mb-2"><a href="{{ url_for('blog')}}"> Blog </a></li>
+                <li class="mb-2"><a href="{{ url_for('users.service')}}"> Service </a></li>
+                <li class="mb-2"><a href="{{ url_for('userscontact')}}"> Contact </a></li>
+                <li class="mb-2"><a href="{{ url_for('users.blog')}}"> Blog </a></li>
               </ul>
             </div>
             <!-- end footer-item -->
@@ -976,12 +977,12 @@
               <div class="title-shape border-bottom-0"><span></span></div>
               <ul class="list-items list-items-hover pt-4">
                 <li class="mb-2"><a href="#">Guide</a></li>
-                <li class="mb-2"><a href="{{ url_for('faq')}}">Faq</a></li>
+                <li class="mb-2"><a href="{{ url_for('users.faq')}}">Faq</a></li>
                 <li class="mb-2"><a href="#">Advertise</a></li>
                 <li class="mb-2"><a href="#">Help Center</a></li>
                 <li class="mb-2"><a href="#">Privacy Policy</a></li>
                 <li class="mb-2">
-                  <a href="{{ url_for('terms_of_service')}}"> Terms of Services </a>
+                  <a href="{{ url_for('users.terms_of_service')}}"> Terms of Services </a>
                 </li>
               </ul>
             </div>
@@ -1000,8 +1001,8 @@
         >
           <p class="copy-desc" style="color: #000 !important">
             Copyright &copy; 2024 Bitnovia Coins. All Rights Reserved.
-            <a href="{{ url_for('terms_of_service')}}"> Terms of Services </a> |
-            <a href="{{ url_for('faq')}}"> FAQ </a>
+            <a href="{{ url_for('users.terms_of_service')}}"> Terms of Services </a> |
+            <a href="{{ url_for('users.faq')}}"> FAQ </a>
           </p>
           <!-- Google Translate container -->
           <div id="google_translate_element"></div>

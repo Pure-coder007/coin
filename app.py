@@ -124,5 +124,11 @@ def account():
     return render_template('account.html')
 
 
+
+@app.route('/bitcoin_chart', methods=['GET', 'POST'])
+def bitcoin_chart():
+    return render_template('bitcoin_chart.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)

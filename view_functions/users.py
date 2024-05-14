@@ -126,3 +126,13 @@ def bonus_profit():
 @user.route('/net_profit', methods=['GET', 'POST'])
 def net_profit():
     return render_template('net_profit.html')
+
+
+
+
+
+@user.route('/layout', methods=['GET', 'POST'])
+def layout():
+    return render_template('layout.html')
+
+
