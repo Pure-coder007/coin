@@ -9,7 +9,7 @@ import flask
 
 uri = os.getenv("DATABASE_URI", "sqlite:///service_hub.db")
 
-print(uri, "uri")
+# print(uri, "uri")
 
 if uri and uri.startswith("postgres://"):
     uri = uri.replace("postgres://", "postgresql://", 1)
