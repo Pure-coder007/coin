@@ -7,16 +7,24 @@ import os
 import flask
 
 
+uri = os.getenv("DATABASE_URI", "postgres://bitnovia:eZotEmgUR0r361aU5peoAyCdj1i7tKSJ@dpg-cp1jn6e3e1ms738nku40-a.oregon-postgres.render.com/bitnovia_db")
+
+print(uri, "uri")
+
+if uri and uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql://", 1)
+
+
 def create_app():
     base_dir = os.path.dirname(os.path.realpath(__file__))
 
     app = Flask(__name__)
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(
-        base_dir, "service_hub.db"
-    )
+    # app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(
+    #     base_dir, "service_hub.db"
+    # )
 
-    # app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql db link here'
+    app.config["SQLALCHEMY_DATABASE_URI"] = uri
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     app.config["SECRET_KEY"] = "4f557e8e5eb51bfb7c42"
     app.config["DEBUG"] = False
