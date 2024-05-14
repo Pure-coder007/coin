@@ -7,7 +7,7 @@ import os
 import flask
 
 
-uri = os.getenv("DATABASE_URI", "postgres://bitnovia:eZotEmgUR0r361aU5peoAyCdj1i7tKSJ@dpg-cp1jn6e3e1ms738nku40-a.oregon-postgres.render.com/bitnovia_db")
+uri = os.getenv("DATABASE_URI", "sqlite:///service_hub.db")
 
 print(uri, "uri")
 
