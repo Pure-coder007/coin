@@ -67,7 +67,9 @@
           <span class="mr-2 mr-md-3 text-warning"
             ><i class="fa fa-envelope" aria-hidden="true"></i
           ></span>
-          <span id="logout" href="../public_html/index.html">Logout</span>
+          <span id="logout">
+            <a href="{{ url_for('auth.logout') }}" class="text-white text-decoration-none">Logout</a>
+          </span>
         </div>
       </div>
     </nav>
@@ -190,22 +192,22 @@
         <div class="p-4">
           <ul class="list-unstyled components">
             <li class="pt-3">
-              <a href="{{ url_for('users.admin') }}"
+              <a href="{{ url_for('admin.admin') }}"
                 ><i class="fa fa-home mr-3 text-warning"></i> Admin Dashboard</a
               >
             </li>
             <li class="pt-5 active">
-              <a href="{{ url_for('users.account') }}"
+              <a href="{{ url_for('admin.account') }}"
                 ><i class="fa fa-user mr-3 text-warning"></i> Account</a
               >
             </li>
             <li class="pt-5">
-              <a href="{{ url_for('users.bonus_profit') }}"
+              <a href="{{ url_for('admin.bonus_profit') }}"
                 ><i class="fa fa-gift mr-3 text-warning"></i> Bonus Profit</a
               >
             </li>
             <li class="pt-5">
-              <a href="{{ url_for('users.net_profit') }}"
+              <a href="{{ url_for('admin.net_profit') }}"
                 ><i class="fa fa-money mr-3 text-warning"></i> Net Profit</a
               >
             </li>
@@ -229,29 +231,77 @@
                 <thead>
                   <tr>
                     <th scope="col">S/N</th>
-                    <th scope="col">id</th>
                     <th scope="col">Full Name</th>
                     <th scope="col">Email Address</th>
                     <th scope="col">Mobile Number</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Account Total</th>
+                    <th scope="col">DoB</th>
+                    <th scope="col">Date Joined</th>
+                    <th scope="col">Occupation</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Password</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody id="userTableBody">
-                  <!-- <tr>
-                    <th scope="row">1</th>
-                    <td>Otto Mark</td>
-                    <td>mark@gmial.com</td>
-                    <td>08196728432</td>
-                    <td>Normal</td>
-                    <td>12,000</td>
+                  {% for user in users %}
+                  <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ user.fullname }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.phone }}</td>
+                    <td>{{ user.dob }}</td>
+                    <td>{{ user.date_joined }}</td>
+                    <td>{{ user.occupation }}</td>
+                    <td>{{ user.country }}</td>
+                    <td>{{ user.password }}</td>
                     <td>
-                      <button class="btn btn-warning btn-outline-dark">
-                        Add
+                      <button class="btn btn-warning btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal{{ user.id}}">
+                        Manage
                       </button>
                     </td>
-                  </tr> -->
+                  </tr>
+
+                  <!-- Modal -->
+                <div class="modal fade" id="exampleModal{{user.id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{ user.id}}" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Manage User</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form action="{{ url_for('admin.manage_user', user_id=user.id) }}" method="post">
+                          <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Message:</label>
+                            <input type="text" class="form-control shadow-none" id="recipient-name" name="message" value="{% if user.message %}{{ user.message }}{% endif %}" placeholder="Message">
+                            <!-- chech box -->
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="on" id="flexCheckDefault" name="show_message" {% if user.show_message %} checked {% endif %}>
+                              <label class="form-check-label" for="flexCheckDefault">
+                                Show/Hide
+                              </label><br>
+
+                              <span class="text-info badge fw-normal">
+                                {% if user.show_message %}
+                                Uncheck this box if you don't want the user to see the message
+                                {% else %}
+                                Check this box if you want the user to see the message
+                                {% endif %}
+                              </span>
+                            </div>
+                          </div>
+
+                          <button type="submit" class="btn btn-primary">Update</button>
+                        </form>
+                      </div>
+                      <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+                  {% endfor %}
                 </tbody>
               </table>
             </div>
@@ -259,6 +309,17 @@
         </div>
       </div>
     </div>
+    {% if alert %}
+    <div class="toast alert_toast align-items-center show fade text-white pr-4 {% if bg_color %} bg-{{bg_color}} {% else %} bg-info {% endif %} border-0 right-0 position-fixed top-0 end-0" role="alert"  
+    data-bs-autohide="true" aria-live="polite" aria-atomic="true" data-bs-animation="true" style="z-index: 99; margin-top: 5rem; transform: translateX(100%); transition: transform 0.5s ease-in-out;">
+      <div class="d-flex">
+        <div class="toast-body" style="font-size: 1rem;">
+          {{alert}}
+        </div>
+        <!-- <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button> -->
+      </div>
+    </div>
+  {% endif %}
     <!-- footer -->
     <!-- footer -->
     <footer
@@ -556,6 +617,18 @@
     }
   });
 </script>
+
+<script>
+  var myToast = new bootstrap.Toast(document.querySelector('.alert_toast'));
+
+  document.querySelector('.alert_toast').style.transform = 'translateX(-0%)';
+
+  setTimeout(function() {
+      // fade the toast away
+      document.querySelector('.alert_toast').style.transition = '4s ease-in-out';
+      myToast.hide();
+  }, 1000);
+  </script>
 
   </body>
 </html>
