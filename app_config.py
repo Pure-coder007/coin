@@ -7,7 +7,7 @@ import os
 import flask
 
 
-uri = os.getenv("DATABASE_URI", "sqlite:///service_hub.db")
+uri = os.getenv("DATABASE_URI")
 
 # print(uri, "uri")
 
