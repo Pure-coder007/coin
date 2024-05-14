@@ -66,10 +66,10 @@
         <i class="fa fa-bars text-warning"></i>
         <span class="sr-only">Toggle Menu</span>
       </button>
-     <button type="button" id="sidebarCollapse" class="btn text-white pl-0">
+     <!-- <button type="button" id="sidebarCollapse" class="btn text-white pl-0">
       <i class="fa fa-bars text-warning"></i>
       <span class="sr-only">Toggle Menu</span>
-     </button>
+     </button> -->
      <a class="navbar-brand" href="{{ url_for('users.user_dash')}}">
       <img
        src="{{ url_for('static', filename='assets/img/logo-white-bitnovia.png') }}"
@@ -574,6 +574,7 @@
       Copyright &copy;
       <script>
        document.write(new Date().getFullYear());
+       
       </script>
       .
       <a href="www.bitnoviacoinsinvest.com" target="_blank" class="text-white"
@@ -584,6 +585,32 @@
     </div>
    </div>
   </footer>
+
+  <script>
+    // Function to open the sidebar
+    function openSidebar() {
+      document.getElementById("sidebar").classList.add("active");
+      document.getElementById("content").classList.add("active");
+    }
+  
+    // Function to close the sidebar
+    function closeSidebar() {
+      document.getElementById("sidebar").classList.remove("active");
+      document.getElementById("content").classList.remove("active");
+    }
+  
+    // Add event listener to the hamburger menu button
+    document.getElementById("sidebarCollapse").addEventListener("click", function() {
+      // Check if the sidebar is already open or closed
+      if (document.getElementById("sidebar").classList.contains("active")) {
+        // If it's open, close it
+        closeSidebar();
+      } else {
+        // If it's closed, open it
+        openSidebar();
+      }
+    });
+  </script>
   <!-- Toastr Notifications - EXTERNAL JS -->
   <script
       type="text/javascript"
