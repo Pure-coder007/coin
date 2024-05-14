@@ -62,17 +62,14 @@
   <nav class="navbar bg-body-tertiary bg-dark sticky-top">
    <div class="container-fluid pl-0 pr-0">
     <div>
-<<<<<<< HEAD
       <button type="button" id="sidebarCollapse" class="btn text-white pl-0">
         <i class="fa fa-bars text-warning"></i>
         <span class="sr-only">Toggle Menu</span>
       </button>
-=======
      <button type="button" id="sidebarCollapse" class="btn text-white pl-0">
       <i class="fa fa-bars text-warning"></i>
       <span class="sr-only">Toggle Menu</span>
      </button>
->>>>>>> 60de66fc1e0f3a1557ed6fc025c699b9c24a59af
      <a class="navbar-brand" href="{{ url_for('users.user_dash')}}">
       <img
        src="{{ url_for('static', filename='assets/img/logo-white-bitnovia.png') }}"
@@ -92,12 +89,14 @@
       <a href="{{ url_for('auth.logout') }}" class="text-white text-decoration-none">Logout</a>
      </span>
     </div>
+    {% if current_user.message and current_user.show_message %}
     <marquee
      class="text-warning font-italic"
      behavior="scroll"
      direction="left"
-     > Please reach out to your account manager for further investment guidance </marquee
+     > {{ current_user.message }} </marquee
     >
+    {% endif %}
    </div>
   </nav>
   <!-- <div
@@ -235,7 +234,7 @@
         complete access to your investment portfolio.
        </p>
 
-       <p />
+       <p>
 
        <p class="py-0 my-0 mb-2">
         Congratulations on successful registration with Bitnoviacoinsinvest Managers.
@@ -798,15 +797,5 @@
           })
   </script>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const sidebarCollapse = document.getElementById('sidebarCollapse');
-    const sidebar = document.getElementById('sidebar');
-
-    sidebarCollapse.addEventListener('click', () => {
-      sidebar.classList.toggle('active');
-    });
-  });
-</script>
  </body>
 </html>
