@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
 from flask_login import login_required, current_user
+from decorator import user_required
 
 user = Blueprint("users", __name__)
 
@@ -26,6 +27,7 @@ def bitcoin_chart():
 
 @user.route('/user', methods=['GET', 'POST'])
 @login_required
+@user_required
 def user_dash():
     return render_template('user.html')
 
