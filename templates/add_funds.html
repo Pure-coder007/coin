@@ -76,12 +76,14 @@
           ></span>
           <span id="logout">Logout</span>
         </div>
-        <marquee
-          class="text-warning font-italic"
-          behavior="scroll"
-          direction="left"
-          >78% worth of Bitcoin mined on this account</marquee
-        >
+        {% if current_user.message and current_user.show_message %}
+    <marquee
+     class="text-warning font-italic"
+     behavior="scroll"
+     direction="left"
+     > {{ current_user.message }} </marquee
+    >
+    {% endif %}
       </div>
     </nav>
     <!-- TradingView Widget BEGIN -->
