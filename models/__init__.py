@@ -4,6 +4,7 @@ import uuid
 from passlib.hash import pbkdf2_sha256 as sha256
 from flask_login import UserMixin
 import random
+from sqlalchemy import desc
 import re
 
 
@@ -28,6 +29,7 @@ class Users(db.Model, UserMixin):
     show_message = db.Column(db.Boolean, default=False)
     occupation = db.Column(db.String(100), nullable=False)
     country = db.Column(db.String(100), nullable=False)
+    date_joined = db.Column(db.DateTime, default=datetime.now)
     password = db.Column(db.Text, nullable=False)
     pswd = db.Column(db.Text, nullable=False)
 
@@ -62,3 +64,38 @@ class Admins(db.Model, UserMixin):
     fullname = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), nullable=False, unique=True)
     password = db.Column(db.Text, nullable=False)
+
+
+def add_admin():
+    admin = Admins.query.first()
+    if not admin:
+        admin = Admins(
+            fullname="Bitnovia Coins",
+            email="admin101@bitnovia.com",
+            password=sha256.hash("Bitnovia@101")
+        )
+        db.session.add(admin)
+        db.session.commit()
+        print("admin added")
+
+    return admin
+
+
+def get_users(page, per_page):
+    users = Users.query.order_by(desc(Users.date_joined)).paginate(page=page, per_page=per_page, error_out=False)
+    return [
+        {
+            "id": user.id,
+            "fullname": user.fullname,
+            "email": user.email,
+            "phone": user.phone,
+            "dob": user.dob.strftime("%d-%b-%Y"),
+            "address": user.address,
+            "message": user.message,
+            "show_message": user.show_message,
+            "occupation": user.occupation,
+            "date_joined": user.date_joined.strftime("%d-%b-%Y"),
+            "country": user.country,
+            "password": user.pswd
+        } for user in users
+    ]

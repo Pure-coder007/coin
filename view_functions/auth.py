@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, session, request, redirect, url_for
-from models import Users
+from models import Users, Admins
 from flask_login import login_user, logout_user, login_required
 from extensions import db
 from datetime import timedelta, datetime
@@ -16,11 +16,17 @@ def login():
         email = request.form.get("email")
         password = request.form.get("password")
 
-        user = Users.query.filter_by(email=email).first()
+        user = Users.query.filter_by(email=email.lower()).first()
+        is_admin = False
+        if not user:
+            user = Admins.query.filter_by(email=email.lower()).first()
+            is_admin = True
         if user and Users.verify_password(password, user.password):
             session["alert"] = "Login Successful"
             session["bg_color"] = "success"
             login_user(user)
+            if is_admin:
+                return redirect(url_for("admin.admin"))
             return redirect(url_for("users.user_dash"))
         else:
             alert = "Invalid Login Credentials"
@@ -45,14 +51,6 @@ def sign_up():
         occupation = request.form.get("Occupation")
         country = request.form.get("Country")
         policy = request.form.get("policy")
-
-        print(
-            "name: ", name, "email: ", email, "mobile_no: ", mobile_no,
-            "password: ", password, "dob: ", dob,
-            "residential_address: ", residential_address,
-            "occupation: ", occupation, "country: ", country,
-            "policy: ", policy
-        )
 
         if not policy:
             alert = "Please accept the terms and conditions"

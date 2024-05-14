@@ -67,7 +67,9 @@
           <span class="mr-2 mr-md-3 text-warning"
             ><i class="fa fa-envelope" aria-hidden="true"></i
           ></span>
-          <span id="logout" href="../public_html/index.html">Logout</span>
+          <span id="logout">
+            <a href="{{ url_for('auth.logout') }}" class="text-white text-decoration-none">Logout</a>
+          </span>
         </div>
       </div>
     </nav>
@@ -189,22 +191,22 @@
         <div class="p-4">
           <ul class="list-unstyled components">
             <li class="pt-3">
-              <a href="{{ url_for('users.admin') }}"
+              <a href="{{ url_for('admin.admin') }}"
                 ><i class="fa fa-home mr-3 text-warning"></i> Admin Dashboard</a
               >
             </li>
             <li class="pt-5 active">
-              <a href="{{ url_for('users.account') }}"
+              <a href="{{ url_for('admin.account') }}"
                 ><i class="fa fa-user mr-3 text-warning"></i> Account</a
               >
             </li>
             <li class="pt-5">
-              <a href="{{ url_for('users.bonus_profit') }}"
+              <a href="{{ url_for('admin.bonus_profit') }}"
                 ><i class="fa fa-gift mr-3 text-warning"></i> Bonus Profit</a
               >
             </li>
             <li class="pt-5">
-              <a href="{{ url_for('users.net_profit') }}"
+              <a href="{{ url_for('admin.net_profit') }}"
                 ><i class="fa fa-money mr-3 text-warning"></i> Net Profit</a
               >
             </li>
@@ -225,7 +227,7 @@
             <div
               class="card col-12 col-md-4 py-2 py-md-4 bg-transparent rounded-lg border border-warning border-5 text-dark mb-4 mb-md-3 shadow-lg"
             >
-              <a href="{{ url_for('users.account') }}">
+              <a href="{{ url_for('admin.account') }}">
                 <div class="card-body py-4">
                   <h2 class="card-title text-center pt-md-4 pt-lg-0">
                     <strong> Account</strong>
@@ -236,7 +238,7 @@
             <div
               class="card col-12 col-md-4 py-2 py-md-4 bg-transparent rounded-lg border border-warning border-5 text-dark mb-4 mb-md-3 shadow-lg"
             >
-              <a href="{{ url_for('users.bonus_profit') }}">
+              <a href="{{ url_for('admin.bonus_profit') }}">
                 <div class="card-body py-4">
                   <h2 class="card-title text-center">
                     <strong>Bonus Profits</strong>
@@ -247,7 +249,7 @@
             <div
               class="card col-12 col-md-4 py-2 py-md-4 bg-transparent rounded-lg border border-warning border-5 text-dark mb-4 mb-md-3 shadow-lg"
             >
-              <a href="{{ url_for('users.net_profit') }}">
+              <a href="{{ url_for('admin.net_profit') }}">
                 <div class="card-body py-4">
                   <h2 class="card-title text-center">
                     <strong>Net Profits</strong>
@@ -259,9 +261,19 @@
         </div>
       </div>
     </div>
-
 {% extends 'layout.html' %}
 
+    {% if alert %}
+    <div class="toast alert_toast align-items-center show fade text-white pr-4 {% if bg_color %} bg-{{bg_color}} {% else %} bg-info {% endif %} border-0 right-0 position-fixed top-0 end-0" role="alert"  
+    data-bs-autohide="true" aria-live="polite" aria-atomic="true" data-bs-animation="true" style="z-index: 99; margin-top: 5rem; transform: translateX(100%); transition: transform 0.5s ease-in-out;">
+      <div class="d-flex">
+        <div class="toast-body" style="font-size: 1rem;">
+          {{alert}}
+        </div>
+        <!-- <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button> -->
+      </div>
+    </div>
+  {% endif %}
 
     <!-- footer -->
     <footer
@@ -473,6 +485,18 @@
       // If it's closed, open it
       openSidebar();
     }
+  });
+</script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sidebarCollapse = document.getElementById('sidebarCollapse');
+    const sidebar = document.getElementById('sidebar');
+
+    sidebarCollapse.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
   });
 </script>
   </body>
