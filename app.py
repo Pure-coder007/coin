@@ -117,5 +117,12 @@ def update_mobile():
 def withdrawal():
     return render_template('withdrawal.html')
 
+
+
+@app.route('/account', methods=['GET', 'POST'])
+def account():
+    return render_template('account.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)

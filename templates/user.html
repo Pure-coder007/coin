@@ -40,9 +40,9 @@
     });
   
     // Alternatively, you can use jQuery to show the modal
-    $(document).ready(function() {
-      $('#openModalCenter').modal('show');
-    });
+    // $(document).ready(function() {
+    //   $('#openModalCenter').modal('show');
+    // });
   </script>
 
    
@@ -62,11 +62,11 @@
   <nav class="navbar bg-body-tertiary bg-dark sticky-top">
    <div class="container-fluid pl-0 pr-0">
     <div>
-     <button type="button" id="sidebarCollapse" class="btn text-white pl-0">
-      <i class="fa fa-bars text-warning"></i>
-      <span class="sr-only">Toggle Menu</span>
-     </button>
-     <a class="navbar-brand" href="{{ url_for('user')}}">
+      <button type="button" id="sidebarCollapse" class="btn text-white pl-0">
+        <i class="fa fa-bars text-warning"></i>
+        <span class="sr-only">Toggle Menu</span>
+      </button>
+     <a class="navbar-brand" href="{{ url_for('users.user_dash')}}">
       <img
        src="{{ url_for('static', filename='assets/img/logo-white-bitnovia.png') }}"
        alt="Logo"
@@ -249,7 +249,7 @@
        data-dismiss="modal"
        aria-label="Close"
       >
-       <span aria-hidden="true">&times;</span>
+       <span aria-hidden="true"></span>
       </button>
      </div>
     </div>
@@ -273,17 +273,17 @@
       </h6>
      </li>
      <li class="active pt-2">
-      <a href="{{ url_for('user') }}"
+      <a href="{{ url_for('users.user_dash') }}"
        ><i class="fa fa-home mr-3 text-warning"></i> User Dashboard</a
       >
      </li>
      <li class="pt-3">
-      <a href="{{ url_for('add_funds') }}"
+      <a href="{{ url_for('users.add_funds') }}"
        ><i class="fa fa-btc mr-3 text-warning"></i> Deposit</a
       >
      </li>
      <li class="pt-3">
-      <a href="{{ url_for('withdrawal') }}"
+      <a href="{{ url_for('users.withdrawal') }}"
        ><i class="fa fa-money mr-3 text-warning"></i> Withdrawal</a
       >
      </li>
@@ -297,13 +297,13 @@
        <i class="fa fa-caret-down"></i>
       </a>
       <div class="dropdown-menu text-light bg-dark border border-warning">
-       <a class="dropdown-item bg-dark px-3" href="{{ url_for('profile_page') }}"
+       <a class="dropdown-item bg-dark px-3" href="{{ url_for('users.profile_page') }}"
         >Update Profile</a
        >
        <!-- <a class="dropdown-item bg-dark px-3" href="./change-password.html"
         >Change Password</a
        > -->
-       <a class="dropdown-item bg-dark px-3" href="{{ url_for('update_mobile') }}"
+       <a class="dropdown-item bg-dark px-3" href="{{ url_for('users.update_mobile') }}"
         >Update Credentials</a
        >
       </div>
@@ -580,7 +580,7 @@
   <script
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    ></script>>
+    ></script>
 
   <!-- NOTIFICATIONS CONTAINER - JS -->
 
@@ -788,5 +788,16 @@
             xhr.send(JSON.stringify(postData));
           })
   </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sidebarCollapse = document.getElementById('sidebarCollapse');
+    const sidebar = document.getElementById('sidebar');
+
+    sidebarCollapse.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+  });
+</script>
  </body>
 </html>
