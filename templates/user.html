@@ -62,10 +62,17 @@
   <nav class="navbar bg-body-tertiary bg-dark sticky-top">
    <div class="container-fluid pl-0 pr-0">
     <div>
+<<<<<<< HEAD
       <button type="button" id="sidebarCollapse" class="btn text-white pl-0">
         <i class="fa fa-bars text-warning"></i>
         <span class="sr-only">Toggle Menu</span>
       </button>
+=======
+     <button type="button" id="sidebarCollapse" class="btn text-white pl-0">
+      <i class="fa fa-bars text-warning"></i>
+      <span class="sr-only">Toggle Menu</span>
+     </button>
+>>>>>>> 60de66fc1e0f3a1557ed6fc025c699b9c24a59af
      <a class="navbar-brand" href="{{ url_for('users.user_dash')}}">
       <img
        src="{{ url_for('static', filename='assets/img/logo-white-bitnovia.png') }}"
@@ -81,7 +88,9 @@
      <span class="mr-2 mr-md-3 text-warning"
       ><i class="fa fa-envelope" aria-hidden="true"></i
      ></span>
-     <span id="logout">Logout</span>
+     <span id="logout">
+      <a href="{{ url_for('auth.logout') }}" class="text-white text-decoration-none">Logout</a>
+     </span>
     </div>
     <marquee
      class="text-warning font-italic"
