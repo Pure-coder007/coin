@@ -1,5 +1,5 @@
 from extensions import db, login_manager, migrate
-from flask import redirect, flash, url_for, session, render_template, Flask
+from flask import redirect, flash, url_for, session, render_template, Flask, request
 from view_functions import AuthenticationBlueprint, UserBlueprint, AdminBlueprint
 from models import Users, Admins
 from datetime import timedelta
@@ -51,6 +51,14 @@ def create_app():
         session["alert"] = "Login to access this page"
         session["bg_color"] = "danger"
         return redirect(url_for("auth.login"))
+
+    # call back
+    @app.before_request
+    def before_request():
+        session.permanent = True
+        referral = request.referrer
+        session["referral"] = referral
+
 
     app.register_blueprint(AuthenticationBlueprint)
     app.register_blueprint(UserBlueprint)

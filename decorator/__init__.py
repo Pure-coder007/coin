@@ -1,6 +1,6 @@
 from models import Users, Admins
 from flask_login import current_user
-from flask import url_for, redirect, session
+from flask import url_for, redirect, session, request
 from functools import wraps
 
 
@@ -24,5 +24,17 @@ def user_required(f):
             session["alert"] = "You cannot access this page"
             session["bg_color"] = "danger"
             return redirect(url_for('users.index'))
+        return f(*args, **kwargs)
+    return decorated_function
+
+
+# check if logged in
+def check_logged_in(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if current_user.is_authenticated:
+            previous_endpoint = session.get("referral")
+            print(previous_endpoint, "previous endpoint")
+            return redirect(previous_endpoint)
         return f(*args, **kwargs)
     return decorated_function

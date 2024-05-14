@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for, session, reques
 from models import get_users, Users
 from flask_login import login_required
 from extensions import db
-from decorator import admin_required
+from decorator import admin_required, check_logged_in
 
 admin_blp = Blueprint("admin", __name__)
 

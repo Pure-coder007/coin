@@ -1,13 +1,15 @@
 from flask import Blueprint, render_template, session, request, redirect, url_for
 from models import Users, Admins
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 from extensions import db
+from decorator import check_logged_in
 from datetime import timedelta, datetime
 
 authenticator = Blueprint("auth", __name__)
 
 
 @authenticator.route("/login", methods=["GET", "POST"])
+@check_logged_in
 def login():
     alert = session.pop("alert", None)
     bg_color = session.pop("bg_color", None)
@@ -38,6 +40,7 @@ def login():
 
 
 @authenticator.route("/sign_up", methods=["GET", "POST"])
+@check_logged_in
 def sign_up():
     alert = session.pop("alert", None)
     bg_color = session.pop("bg_color", None)
@@ -88,6 +91,7 @@ def sign_up():
 
 
 @authenticator.route("/reset_password", methods=["GET", "POST"])
+@check_logged_in
 def reset_password():
     return render_template("reset_password.html")
 
