@@ -21,7 +21,7 @@
     <title>Service | bitnoviacoinsinvest.com</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="images/favicon.png" />
+    <link rel="icon" href="{{ url_for('static', filename='imagess/favicon.png')}}" />
 
     <!-- Google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -32,30 +32,27 @@
     />
 
     <!-- Template CSS Files -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/bootstrap-select.min.css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="css/owl.theme.default.min.css" />
-    <link rel="stylesheet" href="css/jquery.fancybox.css" />
-    <link rel="stylesheet" href="css/toastr.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <!-- Toastr Notifications - EXTERNAL CSS -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
-    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-select.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='jquery.fancybox.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='toastr.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+	<!-- Toastr Notifications - EXTERNAL CSS -->
+	<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
 
   <body style="color: #000">
     <!-- start per-loader -->
-    <div class="loader-container">
+    <!-- <div class="loader-container">
       <div class="loader-ripple">
         <div></div>
         <div></div>
       </div>
-    </div>
+    </div> -->
     <!-- end per-loader -->
 
     <!-- ================================
@@ -67,15 +64,15 @@
           <div class="main-menu-wrapper bg-transparent rounded-0 p-0">
             <div class="row align-items-center">
               <div class="col-lg-2">
-                <a href="index.html" class="main-logo">
+                <a href="{{ url_for('users.index')}}" class="main-logo">
                   <img
                     class="sticky-logo-hide"
-                    src="images/logo-white.png"
+                    src="{{ url_for('static', filename='imagess/logo-white.png')}}"
                     alt="logo"
                   />
                   <img
                     class="sticky-logo-show"
-                    src="images/logo-black.png"
+                    src="{{ url_for('static', filename='images/logo-black.png')}}"
                     alt="logo"
                   />
                 </a>
@@ -91,29 +88,29 @@
                     <ul>
                       <li>
                         <a href="#"
-                          >home <i class="fal fa-angle-down font-size-12"></i
+                          >home <i class="fa fa-angle-down font-size-12"></i
                         ></a>
                         <ul class="drop-menu">
-                          <li><a href="index.html"> Home </a></li>
-                          <li><a href="bonus_profit.html">Bonus Profit</a></li>
-                          <li><a href="net_profit.html">Net Profit</a></li>
+                          <li><a href="{{ url_for('users.index')}}"> Home </a></li>
+                          <li><a href="#">Bonus Profit</a></li>
+                          <li><a href="#">Net Profit</a></li>
                           <li>
-                            <a href="bitcoin-chart.html"> Bitcoin Chart </a>
+                            <a href="{{ url_for('users.bitcoin_chart')}}"> Bitcoin Chart </a>
                           </li>
                         </ul>
                       </li>
                       <li class="has-mega-menu">
                         <a href="#">
-                          Menu <i class="fal fa-angle-down font-size-12"></i
+                          Menu <i class="fa fa-angle-down font-size-12"></i
                         ></a>
                         <div class="drop-menu mega-menu">
                           <ul class="row no-gutters">
                             <li class="mega-menu-item col-lg-4">
                               <ul>
-                                <li><a href="about.html">about us</a></li>
-                                <li><a href="service.html">service</a></li>
+                                <li><a href="{{ url_for('users.about')}}">about us</a></li>
+                                <li><a href="{{ url_for('users.service')}}">service</a></li>
                                 <li>
-                                  <a href="investment-plan.html"
+                                  <a href="{{ url_for('users.investment_plan')}}"
                                     >Bitcoin Investment Plan</a
                                   >
                                 </li>
@@ -122,20 +119,20 @@
                             <li class="mega-menu-item col-lg-4">
                               <ul>
                                 <li>
-                                  <a href="terms-of-services.html">
+                                  <a href="{{ url_for('users.terms_of_service')}}">
                                     Terms of Services</a
                                   >
                                 </li>
-                                <li><a href="faq.html">FAQ</a></li>
-                                <li><a href="contact.html">contact</a></li>
+                                <li><a href="{{ url_for('users.faq')}}">FAQ</a></li>
+                                <li><a href="{{ url_for('users.contact')}}">contact</a></li>
                               </ul>
                             </li>
                             <li class="mega-menu-item col-lg-4">
                               <ul>
-                                <li><a href="sign-up.html"> Sign up</a></li>
-                                <li><a href="login.html"> Login</a></li>
+                                <li><a href="{{ url_for('auth.sign_up')}}"> Sign up</a></li>
+                                <li><a href="{{ url_for('auth.login')}}"> Login</a></li>
                                 <li>
-                                  <a href="../hidden/reset-password.html">
+                                  <a href="#">
                                     Reset password</a
                                   >
                                 </li>
@@ -146,18 +143,18 @@
                       </li>
                       <li>
                         <a href="#"
-                          >team <i class="fal fa-angle-down font-size-12"></i
+                          >team <i class="fa fa-angle-down font-size-12"></i
                         ></a>
                         <ul class="drop-menu">
-                          <li><a href="team.html"> team </a></li>
+                          <li><a href="{{ url_for('users.team')}}"> team </a></li>
                         </ul>
                       </li>
                       <li>
                         <a href="#"
-                          >blog <i class="fal fa-angle-down font-size-12"></i
+                          >blog <i class="fa fa-angle-down font-size-12"></i
                         ></a>
                         <ul class="drop-menu">
-                          <li><a href="blog.html"> blog </a></li>
+                          <li><a href="{{ url_for('users.blog')}}"> blog </a></li>
                         </ul>
                       </li>
                     </ul>
@@ -165,7 +162,7 @@
                   <div class="navbar-toolbar d-flex align-items-center">
                     <ul class="list-items list-items-white">
                       <li class="d-inline-block mr-2">
-                        <a href="login.html"> Login </a>
+                        <a href="{{ url_for('auth.login')}}"> Login </a>
                       </li>
                       <li
                         class="d-inline-block card hover-y"
@@ -174,7 +171,7 @@
                           border-radius: 50px;
                         "
                       >
-                        <a href="sign-up.html" class="btn btn-sm text-white">
+                        <a href="{{ url_for('auth.sign_up')}}" class="btn btn-sm text-white">
                           Sign Up
                         </a>
                       </li>
@@ -216,7 +213,7 @@
           <h2 class="sec-title text-white my-2">Service</h2>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Home</a></li><i class="fa-solid fa-angle-right text-white mt-2 mx-2" style="font-size: .3rem !important;"></i>
               <li class="breadcrumb-item active" aria-current="page">
                 Service
               </li>
@@ -242,10 +239,10 @@
             <div class="card hover-y card-bg-on-hover">
               <div class="card-body">
                 <div class="icon-element">
-                  <i class="fal fa-user-lock"></i>
+                  <i class="fa fa-user-lock"></i>
                 </div>
                 <h4 class="card-title mt-4">
-                  <a href="service.html"> Safe and Secure </a>
+                  <a href="{{ url_for('users.service')}}"> Safe and Secure </a>
                 </h4>
                 <p class="card-text">
                   Prioritizes robust security measures, including encryption,
@@ -261,10 +258,10 @@
             <div class="card hover-y card-bg-on-hover">
               <div class="card-body">
                 <div class="icon-element">
-                  <i class="fal fa-globe"></i>
+                  <i class="fa fa-globe"></i>
                 </div>
                 <h4 class="card-title mt-4">
-                  <a href="service.html"> Global Coverage</a>
+                  <a href="{{ url_for('users.service')}}"> Global Coverage</a>
                 </h4>
                 <p class="card-text">
                   Ensures that users can access and trade digital assets
@@ -280,10 +277,10 @@
             <div class="card hover-y card-bg-on-hover">
               <div class="card-body">
                 <div class="icon-element">
-                  <i class="fal fa-wallet"></i>
+                  <i class="fa fa-wallet"></i>
                 </div>
                 <h4 class="card-title mt-4">
-                  <a href="service.html"> Payment Options </a>
+                  <a href="{{ url_for('users.service')}}"> Payment Options </a>
                 </h4>
                 <p class="card-text">
                   Provide users with a secure method to deposit, withdraw, and
@@ -298,10 +295,10 @@
             <div class="card hover-y card-bg-on-hover">
               <div class="card-body">
                 <div class="icon-element">
-                  <i class="fal fa-mobile-alt"></i>
+                  <i class="fa fa-mobile-alt"></i>
                 </div>
                 <h4 class="card-title mt-4">
-                  <a href="service.html"> Investment Platform Application </a>
+                  <a href="{{ url_for('users.service')}}"> Investment Platform Application </a>
                 </h4>
                 <p class="card-text">
                   Offers users a user-friendly mobile or web application for
@@ -317,10 +314,10 @@
             <div class="card hover-y card-bg-on-hover">
               <div class="card-body">
                 <div class="icon-element">
-                  <i class="fal fa-piggy-bank"></i>
+                  <i class="fa fa-piggy-bank"></i>
                 </div>
                 <h4 class="card-title mt-4">
-                  <a href="service.html"> Cost Efficiency </a>
+                  <a href="{{ url_for('users.service')}}"> Cost Efficiency </a>
                 </h4>
                 <p class="card-text">
                   Focuses on minimizing transaction fees and expenses, enabling
@@ -336,10 +333,10 @@
             <div class="card hover-y card-bg-on-hover">
               <div class="card-body">
                 <div class="icon-element">
-                  <i class="fal fa-project-diagram"></i>
+                  <i class="fa fa-project-diagram"></i>
                 </div>
                 <h4 class="card-title mt-4">
-                  <a href="service.html"> High Liquidity </a>
+                  <a href="{{ url_for('users.service')}}"> High Liquidity </a>
                 </h4>
                 <p class="card-text">
                   Ensures that users can quickly buy or sell digital assets at
@@ -361,6 +358,9 @@
    START SERVICE AREA
 ================================= -->
 
+
+
+
     <!-- ================================
          END FOOTER AREA
 ================================= -->
@@ -369,26 +369,26 @@
         <div class="row">
           <div class="col-lg-3 col-md-6">
             <div class="footer-item mb-5">
-              <a href="index.html" class="d-block">
-                <img src="images/logo-black.png" alt="logo" />
+              <a href="{{ url_for('users.index')}}" class="d-block">
+                <img src="{{ url_for('static', filename='imagess/logo-black.png')}}" alt="logo" />
               </a>
               <ul class="list-items pt-4">
                 <li class="mb-3">
                   <a href=""
-                    ><i class="fal fa-envelope mr-1 font-size-14"></i>
+                    ><i class="fa fa-envelope mr-1 font-size-14"></i>
                     hello@bitnoviacoinsinvest.com
                   </a>
                 </li>
 
                 <li class="mb-3">
-                  <i class="fal fa-map-marker-alt mr-1 font-size-14"></i>
+                  <i class="fa fa-map-marker-alt mr-1 font-size-14"></i>
                   President Building, <br />
                   37b Av. John F. Kennedy, <br />
                   1855 Kirchberg, <br />
                   Luxembourg
                 </li>
                 <li class="mb-3">
-                  <i class="fal fa-clock mr-1 font-size-14"></i> Mon-Sun
+                  <i class="fa fa-clock mr-1 font-size-14"></i> Mon-Sun
                 </li>
               </ul>
               <div class="social-icons">
@@ -414,15 +414,15 @@
               <h5 class="mb-3 font-weight-semi-bold">Company</h5>
               <div class="title-shape border-bottom-0"><span></span></div>
               <ul class="list-items list-items-hover pt-4">
-                <li class="mb-2"><a href="about.html"> About </a></li>
-                <li class="mb-2"><a href="team-member.html"> Team</a></li>
+                <li class="mb-2"><a href="{{ url_for('users.about')}}"> About </a></li>
+                <li class="mb-2"><a href="{{ url_for('users.team')}}"> Team</a></li>
                 <li class="mb-2">
-                  <a href="investment-plan.html"> Investment Plan </a>
+                  <a href="{{ url_for('users.investment_plan')}}"> Investment Plan </a>
                 </li>
 
-                <li class="mb-2"><a href="service.html"> Service </a></li>
-                <li class="mb-2"><a href="contact.html"> Contact </a></li>
-                <li class="mb-2"><a href="blog.html"> Blog </a></li>
+                <li class="mb-2"><a href="{{ url_for('users.service')}}"> Service </a></li>
+                <li class="mb-2"><a href="{{ url_for('users.contact')}}"> Contact </a></li>
+                <li class="mb-2"><a href="{{ url_for('users.blog')}}"> Blog </a></li>
               </ul>
             </div>
             <!-- end footer-item -->
@@ -434,12 +434,12 @@
               <div class="title-shape border-bottom-0"><span></span></div>
               <ul class="list-items list-items-hover pt-4">
                 <li class="mb-2"><a href="#">Guide</a></li>
-                <li class="mb-2"><a href="faq.html">Faq</a></li>
+                <li class="mb-2"><a href="{{ url_for('users.faq')}}">Faq</a></li>
                 <li class="mb-2"><a href="#">Advertise</a></li>
                 <li class="mb-2"><a href="#">Help Center</a></li>
                 <li class="mb-2"><a href="#">Privacy Policy</a></li>
                 <li class="mb-2">
-                  <a href="terms-of-services.html">Terms of Services</a>
+                  <a href="{{ url_for('users.terms_of_service')}}">Terms of Services</a>
                 </li>
               </ul>
             </div>
@@ -458,8 +458,8 @@
         >
           <p class="copy-desc" style="color: #000 !important">
             Copyright &copy; 2024 Bitnovia Coins. All Rights Reserved.
-            <a href="terms-of-services.html"> Terms of Services </a> |
-            <a href="faq.html"> FAQ </a>
+            <a href="{{ url_for('users.terms_of_service')}}"> Terms of Services </a> |
+            <a href="{{ url_for('users.faq')}}"> FAQ </a>
           </p>
 
           <!-- Google Translate container -->
@@ -469,7 +469,7 @@
           <div>
             <a href="https://www.cssf.lu/en/">
               <img
-                src="images/cssf.png"
+                src="{{ url_for('static', filename='imagess/cssf-logo.png')}}"
                 alt=""
                 class="img-fluid mr-3 flex-shrink-0"
                 style="width: 100px"
@@ -483,12 +483,18 @@
     </section>
     <!-- end footer-area -->
     <!-- ================================
+
+      
+
           END FOOTER AREA
 ================================= -->
 
+
+{% extends 'layout.html' %}
+
     <!-- start scroll-to-top -->
     <div id="scroll-to-top">
-      <i class="far fa-angle-up" title="Go top"></i>
+      <i class="fa fa-angle-up" title="Go top"></i>
     </div>
     <!-- end scroll-to-top -->
 
