@@ -74,7 +74,9 @@
           <span class="mr-2 mr-md-3 text-warning"
             ><i class="fa fa-envelope" aria-hidden="true"></i
           ></span>
-          <span id="logout">Logout</span>
+          <span id="logout">
+            <a href="{{ url_for('auth.logout') }}" class="text-white text-decoration-none">Logout</a>
+           </span>
         </div>
         {% if current_user.message and current_user.show_message %}
     <marquee
