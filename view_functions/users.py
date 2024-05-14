@@ -84,6 +84,7 @@ def contact():
 def reset_password():
     return render_template('reset_password.html')
 
+
 @user.route('/add_funds', methods=['GET', 'POST'])
 def add_funds():
     return render_template('add_funds.html')
@@ -93,6 +94,7 @@ def add_funds():
 def withdrawal():
     return render_template('withdrawal.html')
 
+
 @user.route('/profile_page', methods=['GET', 'POST'])
 def profile_page():
     return render_template('profile_page.html')
@@ -101,28 +103,3 @@ def profile_page():
 @user.route('/update_mobile', methods=['GET', 'POST'])
 def update_mobile():
     return render_template('update_mobile.html')
-
-
-
-
-@user.route('/account', methods=['GET', 'POST'])
-def account():
-    return render_template('account.html')
-
-
-
-@user.route('/admin', methods=['GET', 'POST'])
-def admin():
-    return render_template('admin.html')
-
-
-
-@user.route('/bonus_profit', methods=['GET', 'POST'])
-def bonus_profit():
-    return render_template('bonus_profit.html')
-
-
-
-@user.route('/net_profit', methods=['GET', 'POST'])
-def net_profit():
-    return render_template('net_profit.html')
