@@ -67,7 +67,9 @@
           <span class="mr-2 mr-md-3 text-warning"
             ><i class="fa fa-envelope" aria-hidden="true"></i
           ></span>
-          <span id="logout" href="../public_html/index.html">Logout</span>
+          <span id="logout">
+            <a href="{{ url_for('auth.logout') }}" class="text-white text-decoration-none">Logout</a>
+          </span>
         </div>
       </div>
     </nav>
@@ -190,22 +192,22 @@
         <div class="p-4">
           <ul class="list-unstyled components">
             <li class="pt-3">
-              <a href="{{ url_for('users.admin') }}"
+              <a href="{{ url_for('admin.admin') }}"
                 ><i class="fa fa-home mr-3 text-warning"></i> Admin Dashboard</a
               >
             </li>
             <li class="pt-5 active">
-              <a href="{{ url_for('users.account') }}"
+              <a href="{{ url_for('admin.account') }}"
                 ><i class="fa fa-user mr-3 text-warning"></i> Account</a
               >
             </li>
             <li class="pt-5">
-              <a href="{{ url_for('users.bonus_profit') }}"
+              <a href="{{ url_for('admin.bonus_profit') }}"
                 ><i class="fa fa-gift mr-3 text-warning"></i> Bonus Profit</a
               >
             </li>
             <li class="pt-5">
-              <a href="{{ url_for('users.net_profit') }}"
+              <a href="{{ url_for('admin.net_profit') }}"
                 ><i class="fa fa-money mr-3 text-warning"></i> Net Profit</a
               >
             </li>
