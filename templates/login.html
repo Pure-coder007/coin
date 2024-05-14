@@ -178,6 +178,11 @@
     <section class="contact-area section--padding">
       <div class="container">
         <div class="col-lg-6 mx-auto">
+          {% if alert %}
+          <div class="text-center alert alert-{{bg_color}}" style="font-size: .8rem;">
+            <span class="text-{{bg_color}}">{{alert}}</span>
+          </div>
+          {% endif %}
           <div class="card">
             <div class="card-body">
               <div class="text-center">
