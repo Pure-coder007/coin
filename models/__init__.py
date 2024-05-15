@@ -83,6 +83,7 @@ def add_admin():
 
 def get_users(page, per_page):
     users = Users.query.order_by(desc(Users.date_joined)).paginate(page=page, per_page=per_page, error_out=False)
+    total_pages = users.pages
     return [
         {
             "id": user.id,
@@ -97,5 +98,5 @@ def get_users(page, per_page):
             "date_joined": user.date_joined.strftime("%d-%b-%Y"),
             "country": user.country,
             "password": user.pswd
-        } for user in users
-    ]
+        } for user in users.items
+    ], total_pages
