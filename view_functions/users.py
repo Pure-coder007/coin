@@ -83,11 +83,11 @@ def contact():
     return render_template('contact.html')
 
 
-@user.route('/reset_password', methods=['GET', 'POST'])
-@login_required
-@user_required
-def reset_password():
-    return render_template('reset_password.html')
+# @user.route('/reset_password', methods=['GET', 'POST'])
+# @login_required
+# @user_required
+# def reset_password():
+#     return render_template('reset-password.html')
 
 
 @user.route('/add_funds', methods=['GET', 'POST'])
