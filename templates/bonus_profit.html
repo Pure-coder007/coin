@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Bitnoviacoinsinvest | Bonus Profit</title>
+    <title>NoviaXchange | Account</title>
     <meta charset="utf-8" />
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+     name="viewport"
+     content="width=device-width, initial-scale=1"
     />
     <link
    rel="icon"
@@ -24,6 +24,9 @@
      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
      rel="stylesheet"
     />
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -53,13 +56,7 @@
             <span class="sr-only">Toggle Menu</span>
           </button>
           <a class="navbar-brand" href="{{url_for('users.index')}}">
-<!--            <img-->
-<!--              src="{{url_for('static', filename='assets/img/logo-white-bitnovia.png')}}"-->
-<!--              alt="Logo"-->
-<!--              class="d-inline-block align-text-top img-fluid"-->
-<!--            />-->
-
-              <img
+            <img
               src="{{url_for('static', filename='assets/img/new_logo.png')}}"
               alt="Logo"
               class="d-inline-block align-text-top img-fluid"
@@ -204,15 +201,14 @@
                 ><i class="fa fa-home mr-3 text-warning"></i> Admin Dashboard</a
               >
             </li>
-            <li class="pt-5 active">
+            <li class="pt-5">
               <a href="{{ url_for('admin.account') }}"
                 ><i class="fa fa-user mr-3 text-warning"></i> Account</a
               >
             </li>
-            <li class="pt-5">
-              <a href="{{ url_for('admin.bonus_profit') }}"
-                ><i class="fa fa-gift mr-3 text-warning"></i> Bonus Profit</a
-              >
+            <li class="pt-5 active">
+
+              <a href="{{ url_for('admin.bonus_profit') }}"><i class="fa fa-gift mr-3 text-warning"></i> Bonus Profit</a>
             </li>
             <li class="pt-5">
               <a href="{{ url_for('admin.net_profit') }}"
@@ -239,37 +235,111 @@
                 <thead>
                   <tr>
                     <th scope="col">S/N</th>
-                    <th scope="col">id</th>
                     <th scope="col">Full Name</th>
                     <th scope="col">Email Address</th>
                     <th scope="col">Mobile Number</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Account Total</th>
+                    <!-- <th scope="col">Date Joined</th> -->
+                    <th scope="col">Bonus Profit</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody id="userTableBody">
-                  <!-- <tr>
-                    <th scope="row">1</th>
-                    <td>Otto Mark</td>
-                    <td>mark@gmial.com</td>
-                    <td>08196728432</td>
-                    <td>Normal</td>
-                    <td>12,000</td>
-                    <td>
-                      <button class="btn btn-warning btn-outline-dark">
-                        Add
+                  {% for user in users %}
+                  <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ user.fullname }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.phone }}</td>
+                    <!-- <td>{{ user.date_joined }}</td> -->
+                    <td>{{ user.bonus_profit }}</td>
+                    <td class="">
+                      <button class="btn btn-warning btn-outline-dark" data-bs-toggle="modal" data-bs-target="#example{{ user.id}}">
+                          Add
                       </button>
                     </td>
-                  </tr> -->
+                  </tr>
+
+
+                  <!-- Modal -->
+                <div class="modal fade" id="example{{user.id}}" tabindex="-1" aria-labelledby="exampleLabel{{ user.id}}" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleLabel">Add Bonus Profit</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form action="{{ url_for('admin.update_user_bonus_profit', user_id=user.id) }}" method="post">
+                          <div class="form-group">
+                              <label for="user-amount" class="col-form-label">Bonus Profit:</label>
+                              <input class="form-control shadow-none" type="number" value="{{ user.bonus_profit }}"
+                                     id="user-amount" name="bonus_profit" placeholder="Amount">
+                          </div>
+
+                          <button type="submit" class="btn btn-warning btn-outline-dark">Add</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                  {% endfor %}
                 </tbody>
               </table>
+                </div>
+                <div class="container">
+        <div class="row" id="pagination">
+          <div class="col-12 d-flex centering"> <!-- Centering pagination -->
+            <div class="pagination_rounded">
+              <ul class="d-flex">
+                {% if page > 1 %}
+                <li class="mx-1"><a href="{{ url_for('admin.account', page=1) }}" class="bg-warning p-2"><i
+                      class="fa-solid fa-angles-left text-white"></i></a></li>
+
+                <li class="mx-1">
+                  <a href="{{ url_for('admin.account', page=page-1) }}" data-bs-toggle="popover"
+                    data-bs-trigger="hover" data-bs-content="Previous Page" class="bg-warning p-2">
+                    <i class="fa-solid fa-chevron-left text-white"></i>
+                  </a>
+                </li>
+                {% endif %}
+
+                {% if page < total_pages %}
+                <li class="mx-1">
+                  <a href="{{ url_for('admin.account', page=page+1) }}" data-bs-toggle="popover"
+                    data-bs-trigger="hover" data-bs-content="Next Page" class="bg-warning p-2">
+                    <i class="fa-solid fa-chevron-right text-white"></i>
+                  </a>
+                </li>
+                <li class="mx-1">
+                  <a href="{{ url_for('admin.account', page=total_pages) }}" data-bs-toggle="popover"
+                    data-bs-trigger="hover" data-bs-content="Go to Last Page" class="bg-warning p-2">
+                    <i class="fa-solid fa-angles-right text-white"></i>
+                  </a>
+                </li>
+                {% endif %}
+              </ul>
             </div>
           </div>
         </div>
       </div>
+          </div>
+        </div>
+      </div>
     </div>
+    {% if alert %}
+    <div class="toast alert_toast align-items-center show fade text-white pr-4 {% if bg_color %} bg-{{bg_color}} {% else %} bg-info {% endif %} border-0 right-0 position-fixed top-0 end-0" role="alert"
+    data-bs-autohide="true" aria-live="polite" aria-atomic="true" data-bs-animation="true" style="z-index: 99; margin-top: 5rem; transform: translateX(100%); transition: transform 0.5s ease-in-out;">
+      <div class="d-flex">
+        <div class="toast-body" style="font-size: 1rem;">
+          {{alert}}
+        </div>
+        <!-- <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button> -->
+      </div>
+    </div>
+  {% endif %}
+
     <!-- footer -->
+
     <!-- footer -->
     <footer
       class="container-fluid bg-dark text-white text-center pt-2 fixed-bottom"
@@ -424,19 +494,21 @@
             const rows = users.map((user, index) => {
               const row = document.createElement("tr");
               row.innerHTML = `
-                        <th scope="row">${index + 1}</th>
-                        <td>${user.id}</td>
-                        <td>${user.name}</td>
-                        <td>${user.email_address}</td>
-                        <td>0${user.mobile_no}</td>
-                        <td>${user.role}</td>
-                        <td>${user.Bonus_Profits}</td>
-                        <td>
-                            <button class="btn btn-warning btn-outline-dark addwallet" data-id="${
-                              user.id
-                            }" data-amount="${user.Account_wallet}">Add</button>
-                        </td>
-                    `;
+                          <th scope="row">${index + 1}</th>
+                          <td>${user.id}</td>
+                          <td>${user.name}</td>
+                          <td>${user.email_address}</td>
+                          <td>0${user.mobile_no}</td>
+                          <td>${user.role}</td>
+                          <td>${user.Account_wallet}</td>
+                          <td>
+                              <button class="btn btn-warning btn-outline-dark addwallet" data-id="${
+                                user.id
+                              }" data-amount="${
+                user.Account_wallet
+              }">Add</button>
+                          </td>
+                      `;
               return row;
             });
 
@@ -462,7 +534,7 @@
                 const UserData = JSON.parse(localStorage.getItem("userData"));
                 const token = UserData.token;
 
-                const url = `https://bitnoviacoinsinvest.com/public/api/admin/updateProfit/${id}/${amount}`;
+                const url = `https://bitnoviacoinsinvest.com/public/api/admin/update-wallet/${id}/${amount}`;
 
                 fetch(url, {
                   method: "PUT",
@@ -475,7 +547,7 @@
                   .then((data) => {
                     if (data) {
                       console.log(data.message);
-                      alert("Bonus profit updated successfully");
+                      alert("Account wallet updated successfully");
                     } else {
                       alert("Try again, error");
                     }
@@ -521,7 +593,7 @@
                 alert("Logged out successfullly!");
                 // const newPath = "index.html"; // Change to the path of your success page
                 // window.history.pushState({}, "", newPath);
-                window.location.href = "../index.html";
+                window.location.href = "../public_html/index.html";
               } else {
                 alert("Error in performing Action.");
               }
@@ -537,6 +609,7 @@
         xhr.send(JSON.stringify(postData));
       });
     </script>
+
 
 <script>
   // Function to open the sidebar
@@ -563,5 +636,18 @@
     }
   });
 </script>
+
+<script>
+  var myToast = new bootstrap.Toast(document.querySelector('.alert_toast'));
+
+  document.querySelector('.alert_toast').style.transform = 'translateX(-0%)';
+
+  setTimeout(function() {
+      // fade the toast away
+      document.querySelector('.alert_toast').style.transition = '4s ease-in-out';
+      myToast.hide();
+  }, 1000);
+  </script>
+
   </body>
 </html>
