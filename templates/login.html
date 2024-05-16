@@ -64,7 +64,13 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2">
                         <a href="{{ url_for('users.index')}}" class="main-logo">
-                            <img class="sticky-logo-hide" src="{{ url_for('static', filename='imagess/logo-white.png')}}" alt="logo">
+                            <img
+              src="{{url_for('static', filename='assets/img/new_logo.png')}}"
+              alt="logo"
+              class="sticky-logo-hide"
+              width="150rem" height="30rem"
+            />
+<!--                            <img class="sticky-logo-hide" src="{{ url_for('static', filename='imagess/logo-white.png')}}" alt="logo">-->
                             <img class="sticky-logo-show" src="{{ url_for('static', filename='imagess/logo-black.png')}}" alt="logo">
                         </a>
                     </div><!-- end col-lg-2 -->
@@ -373,7 +379,7 @@
 
 
   {% if alert %}
-  <div class="toast alert_toast align-items-center show fade text-white pr-4 {% if bg_color %} bg-{{bg_color}} {% else %} bg-info {% endif %} border-0 right-0 position-fixed top-0 end-0" role="alert"  
+  <div class="toast alert_toast align-items-center show fade text-white pr-4 {% if bg_color %} bg-{{bg_color}} {% else %} bg-info {% endif %} border-0 right-0 position-fixed top-0 end-0" role="alert"
   data-bs-autohide="true" aria-live="polite" aria-atomic="true" data-bs-animation="true" style="z-index: 99; margin-top: 5rem; transform: translateX(100%); transition: transform 0.5s ease-in-out;">
     <div class="d-flex">
       <div class="toast-body" style="font-size: 1rem;">
