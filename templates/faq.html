@@ -10,14 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>FAQ | bitnoviacoinsinvest.com</title>
-    
+
     <!-- Google tag (gtag.js) for Bitnovia Coins Invest -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-BHN1RYRFTV"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-        
+
           gtag('config', 'G-BHN1RYRFTV');
         </script>
 
@@ -66,11 +66,18 @@
         <div class="row align-items-center">
           <div class="col-lg-2">
             <a href="{{ url_for('users.index')}}" class="main-logo">
-              <img
-                class="sticky-logo-hide"
-                src="{{ url_for('static', filename='imagess/logo-white.png')}}"
-                alt="logo"
-              />
+                <img
+              src="{{url_for('static', filename='assets/img/new_logo.png')}}"
+              alt="Logo"
+              class="sticky-logo-hide"
+              width="150rem" height="30rem"
+              style=""
+            />
+<!--              <img-->
+<!--                class="sticky-logo-hide"-->
+<!--                src="{{ url_for('static', filename='imagess/logo-white.png')}}"-->
+<!--                alt="logo"-->
+<!--              />-->
               <img
                 class="sticky-logo-show"
                 src="{{ url_for('static', filename='imagess/logo-black.png')}}"
