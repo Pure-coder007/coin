@@ -561,6 +561,18 @@
    <!-- chart ends -->
   </div>
 
+  {% if alert %}
+  <div class="toast alert_toast align-items-center show fade text-white pr-4 {% if bg_color %} bg-{{bg_color}} {% else %} bg-info {% endif %} border-0 right-0 position-fixed top-0 end-0" role="alert"
+  data-bs-autohide="true" aria-live="polite" aria-atomic="true" data-bs-animation="true" style="z-index: 99; margin-top: 5rem; transform: translateX(100%); transition: transform 0.5s ease-in-out;">
+    <div class="d-flex">
+      <div class="toast-body" style="font-size: 1rem;">
+        {{alert}}
+      </div>
+      <!-- <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button> -->
+    </div>
+  </div>
+{% endif %}
+
   <!-- footer -->
   <footer
    class="container-fluid bg-dark text-white text-center pt-2 fixed-bottom"
@@ -825,6 +837,18 @@
             // xhr.send()
             xhr.send(JSON.stringify(postData));
           })
+  </script>
+
+<script>
+  var myToast = new bootstrap.Toast(document.querySelector('.alert_toast'));
+
+  document.querySelector('.alert_toast').style.transform = 'translateX(-0%)';
+
+  setTimeout(function() {
+      // fade the toast away
+      document.querySelector('.alert_toast').style.transition = '4s ease-in-out';
+      myToast.hide();
+  }, 1000);
   </script>
 
  </body>
