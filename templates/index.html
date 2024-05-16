@@ -13,7 +13,7 @@
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-BHN1RYRFTV"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);} 
+          function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
           gtag('config', 'G-BHN1RYRFTV');
@@ -64,7 +64,14 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2">
                         <a href="{{ url_for('users.index')}}" class="main-logo">
-                            <img class="sticky-logo-hide" src="{{ url_for('static', filename='imagess/logo-white.png')}}" alt="logo">
+                            <img
+              src="{{url_for('static', filename='assets/img/new_logo.png')}}"
+              alt="Logo"
+              class="sticky-logo-hide"
+              width="150rem" height="30rem"
+              style=""
+            />
+<!--                            <img class="sticky-logo-hide" src="{{ url_for('static', filename='imagess/logo-white.png')}}" alt="logo">-->
                             <img class="sticky-logo-show" src="{{ url_for('static', filename='imagess/logo-black.png')}}" alt="logo">
                         </a>
                     </div><!-- end col-lg-2 -->
@@ -781,7 +788,7 @@
     <!-- <script type=“text/javascript” src=“https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js”></script> -->
 
 
-    
+
 
 	<!-- NOTIFICATIONS CONTAINER - JS -->
 
