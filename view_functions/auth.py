@@ -93,7 +93,7 @@ def sign_up():
 @authenticator.route("/reset_password", methods=["GET", "POST"])
 @check_logged_in
 def reset_password():
-    return render_template("reset_password.html")
+    return render_template("reset-password.html")
 
 
 # logout
