@@ -2,7 +2,7 @@
 <html lang="en">
  <head>
   <title> Bitnoviacoinsinvest | Profile Page </title>
-  
+
   <meta charset="utf-8" />
   <meta
    name="viewport"
@@ -27,9 +27,9 @@
   />
   <!-- custom css -->
   <link rel="stylesheet" href="./assets/css/style.css" />
-  
-  
-  
+
+
+
  </head>
 
  <body>
@@ -42,10 +42,12 @@
      </button>
      <a class="navbar-brand" href="./user.html">
       <img
-       src="./assets/img/logo-white-bitnovia.png"
-       alt="Logo"
-       class="d-inline-block align-text-top img-fluid"
-      />
+              src="{{url_for('static', filename='assets/img/new_logo.png')}}"
+              alt="Logo"
+              class="d-inline-block align-text-top img-fluid"
+              width="150rem" height="50rem"
+              style=""
+            />
      </a>
     </div>
     <div class="text-white">
@@ -198,7 +200,7 @@
         >
        </div>
       </li>
-      
+
      </ul>
     </div>
    </nav>
@@ -248,9 +250,9 @@
            Update Profile
           </button>
           </div>
-          
+
         </div>
-        
+
       </form>
         </div>
       </div>
@@ -452,10 +454,10 @@
             console.log(err);
         });
     }
-    
+
     btnCred.addEventListener('click', UpdateCred);
 
-    
+
 </script>
 
 <script>
@@ -466,7 +468,7 @@
   const url = 'https://bitnoviacoinsinvest.com/public/api/logout'
   console.log(token)
 
-  
+
   const xhr = new XMLHttpRequest();
 
           // Configure it: POST-request, endpoint URL
@@ -477,7 +479,7 @@
           // Set the request headers
           xhr.setRequestHeader('Content-Type', 'application/json');
           xhr.setRequestHeader('Authorization', 'Bearer ' + token);
- 
+
           xhr.onreadystatechange = function () {
               if (xhr.readyState === 4) {
                   if (xhr.status === 200) {

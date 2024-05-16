@@ -11,13 +11,13 @@ admin_blp = Blueprint("admin", __name__)
 @login_required
 @admin_required
 def account():
-    page = request.args.get('page', 1)
-    per_page = request.args.get('per_page', 10)
+    page = int(request.args.get('page', 1))
+    per_page = int(request.args.get('per_page', 10))
     alert = session.pop("alert", None)
     bg_color = session.pop("bg_color", None)
-    users = get_users(page, per_page)
+    users, total_pages = get_users(page, per_page)
     return render_template('account.html', users=users, alert=alert, bg_color=bg_color,
-                           page=page, per_page=per_page)
+                           page=page, per_page=per_page, total_pages=total_pages)
 
 
 @admin_blp.route('/admin', methods=['GET', 'POST'])

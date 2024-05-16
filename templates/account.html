@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Bitnoviacoinsinvest | Account</title>
+    <title>NoviaXchange | Account</title>
     <meta charset="utf-8" />
     <meta
      name="viewport"
@@ -17,16 +17,19 @@
      rel="stylesheet"
      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-  
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
      rel="stylesheet"
     />
-  
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  
+
     <!-- custom css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css')}}" />
     <!-- chat script -->
@@ -36,8 +39,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    
-    
+
+
   </head>
 
   <body>
@@ -54,9 +57,11 @@
           </button>
           <a class="navbar-brand" href="{{url_for('users.index')}}">
             <img
-              src="{{url_for('static', filename='assets/img/logo-white-bitnovia.png')}}"
+              src="{{url_for('static', filename='assets/img/new_logo.png')}}"
               alt="Logo"
               class="d-inline-block align-text-top img-fluid"
+              width="150rem" height="50rem"
+              style=""
             />
           </a>
         </div>
@@ -295,23 +300,55 @@
                           <button type="submit" class="btn btn-warning btn-outline-dark">Update</button>
                         </form>
                       </div>
-                      <!-- <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                      </div> -->
                     </div>
                   </div>
                 </div>
                   {% endfor %}
                 </tbody>
               </table>
+                </div>
+                <div class="container">
+        <div class="row" id="pagination">
+          <div class="col-12 d-flex centering"> <!-- Centering pagination -->
+            <div class="pagination_rounded">
+              <ul class="d-flex">
+                {% if page > 1 %}
+                <li class="mx-1"><a href="{{ url_for('admin.account', page=1) }}" class="bg-warning p-2"><i
+                      class="fa-solid fa-angles-left text-white"></i></a></li>
+
+                <li class="mx-1">
+                  <a href="{{ url_for('admin.account', page=page-1) }}" data-bs-toggle="popover"
+                    data-bs-trigger="hover" data-bs-content="Previous Page" class="bg-warning p-2">
+                    <i class="fa-solid fa-chevron-left text-white"></i>
+                  </a>
+                </li>
+                {% endif %}
+
+                {% if page < total_pages %}
+                <li class="mx-1">
+                  <a href="{{ url_for('admin.account', page=page+1) }}" data-bs-toggle="popover"
+                    data-bs-trigger="hover" data-bs-content="Next Page" class="bg-warning p-2">
+                    <i class="fa-solid fa-chevron-right text-white"></i>
+                  </a>
+                </li>
+                <li class="mx-1">
+                  <a href="{{ url_for('admin.account', page=total_pages) }}" data-bs-toggle="popover"
+                    data-bs-trigger="hover" data-bs-content="Go to Last Page" class="bg-warning p-2">
+                    <i class="fa-solid fa-angles-right text-white"></i>
+                  </a>
+                </li>
+                {% endif %}
+              </ul>
             </div>
+          </div>
+        </div>
+      </div>
           </div>
         </div>
       </div>
     </div>
     {% if alert %}
-    <div class="toast alert_toast align-items-center show fade text-white pr-4 {% if bg_color %} bg-{{bg_color}} {% else %} bg-info {% endif %} border-0 right-0 position-fixed top-0 end-0" role="alert"  
+    <div class="toast alert_toast align-items-center show fade text-white pr-4 {% if bg_color %} bg-{{bg_color}} {% else %} bg-info {% endif %} border-0 right-0 position-fixed top-0 end-0" role="alert"
     data-bs-autohide="true" aria-live="polite" aria-atomic="true" data-bs-animation="true" style="z-index: 99; margin-top: 5rem; transform: translateX(100%); transition: transform 0.5s ease-in-out;">
       <div class="d-flex">
         <div class="toast-body" style="font-size: 1rem;">
@@ -321,6 +358,7 @@
       </div>
     </div>
   {% endif %}
+
     <!-- footer -->
 
     <!-- footer -->

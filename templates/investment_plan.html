@@ -9,7 +9,7 @@
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-        
+
           gtag('config', 'G-BHN1RYRFTV');
         </script>
     <meta
@@ -41,7 +41,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='toastr.min.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
 	<!-- Toastr Notifications - EXTERNAL CSS -->
-	
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
@@ -66,11 +66,18 @@
         <div class="row align-items-center">
           <div class="col-lg-2">
             <a href="{{ url_for('users.index')}}" class="main-logo">
-              <img
-                class="sticky-logo-hide"
-                src="{{ url_for('static', filename='imagess/logo-white.png')}}"
-                alt="logo"
-              />
+                <img
+              src="{{url_for('static', filename='assets/img/new_logo.png')}}"
+              alt="Logo"
+              class="sticky-logo-hide"
+              width="150rem" height="30rem"
+              style=""
+            />
+<!--              <img-->
+<!--                class="sticky-logo-hide"-->
+<!--                src="{{ url_for('static', filename='imagess/logo-white.png')}}"-->
+<!--                alt="logo"-->
+<!--              />-->
               <img
                 class="sticky-logo-show"
                 src="{{ url_for('static', filename='imagess/logo-black.png')}}"
