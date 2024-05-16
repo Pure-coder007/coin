@@ -238,7 +238,6 @@
                     <th scope="col">Full Name</th>
                     <th scope="col">Email Address</th>
                     <th scope="col">Mobile Number</th>
-                    <!-- <th scope="col">Date Joined</th> -->
                     <th scope="col">Net Profit</th>
                     <th scope="col">Action</th>
                   </tr>
@@ -250,7 +249,6 @@
                     <td>{{ user.fullname }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.phone }}</td>
-                    <!-- <td>{{ user.date_joined }}</td> -->
                     <td>{{ user.net_profit }}</td>
                     <td class="">
                       <button class="btn btn-warning btn-outline-dark" data-bs-toggle="modal" data-bs-target="#example{{ user.id}}">
@@ -272,7 +270,7 @@
                         <form action="{{ url_for('admin.update_user_net_profit', user_id=user.id) }}" method="post">
                           <div class="form-group">
                               <label for="user-amount" class="col-form-label">Net Profit:</label>
-                              <input class="form-control shadow-none" type="number" value="{{ user.net_profile }}"
+                              <input class="form-control shadow-none" type="number" value="{{ user.net_profit }}"
                                      id="user-amount" name="net_profit" placeholder="Amount">
                           </div>
 
