@@ -192,12 +192,12 @@
         <div class="custom-menu"></div>
         <div class="p-4">
           <ul class="list-unstyled components">
-            <li class="pt-3">
+            <li class="pt-3 active">
               <a href="{{ url_for('admin.admin') }}"
                 ><i class="fa fa-home mr-3 text-warning"></i> Admin Dashboard</a
               >
             </li>
-            <li class="pt-5 active">
+            <li class="pt-5">
               <a href="{{ url_for('admin.account') }}"
                 ><i class="fa fa-user mr-3 text-warning"></i> Account</a
               >
@@ -488,6 +488,18 @@
     }
   });
 </script>
+
+<script>
+  var myToast = new bootstrap.Toast(document.querySelector('.alert_toast'));
+
+  document.querySelector('.alert_toast').style.transform = 'translateX(-0%)';
+
+  setTimeout(function() {
+      // fade the toast away
+      document.querySelector('.alert_toast').style.transition = '4s ease-in-out';
+      myToast.hide();
+  }, 1000);
+  </script>
 
 
 <!-- <script>
