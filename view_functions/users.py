@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, session
 from flask_login import login_required, current_user
 from decorator import user_required, check_logged_in
 
@@ -27,7 +27,9 @@ def bitcoin_chart():
 @login_required
 @user_required
 def user_dash():
-    return render_template('user.html')
+    alert = session.pop("alert", None)
+    bg_color = session.pop("bg_color", None)
+    return render_template('user.html', alert=alert, bg_color=bg_color)
 
 
 @user.route('/blog', methods=['GET', 'POST'])
@@ -81,13 +83,6 @@ def error_404():
 @check_logged_in
 def contact():
     return render_template('contact.html')
-
-
-# @user.route('/reset_password', methods=['GET', 'POST'])
-# @login_required
-# @user_required
-# def reset_password():
-#     return render_template('reset-password.html')
 
 
 @user.route('/add_funds', methods=['GET', 'POST'])
