@@ -30,13 +30,29 @@ def admin():
 
 
 @admin_blp.route('/bonus_profit', methods=['GET', 'POST'])
+@login_required
+@admin_required
 def bonus_profit():
-    return render_template('bonus_profit.html')
+    page = int(request.args.get('page', 1))
+    per_page = int(request.args.get('per_page', 10))
+    alert = session.pop("alert", None)
+    bg_color = session.pop("bg_color", None)
+    users, total_pages = get_users(page, per_page)
+    return render_template('bonus_profit.html', users=users, alert=alert, bg_color=bg_color,
+                           page=page, per_page=per_page, total_pages=total_pages)
 
 
 @admin_blp.route('/net_profit', methods=['GET', 'POST'])
+@login_required
+@admin_required
 def net_profit():
-    return render_template('net_profit.html')
+    page = int(request.args.get('page', 1))
+    per_page = int(request.args.get('per_page', 10))
+    alert = session.pop("alert", None)
+    bg_color = session.pop("bg_color", None)
+    users, total_pages = get_users(page, per_page)
+    return render_template('net_profit.html', users=users, alert=alert, bg_color=bg_color,
+                           page=page, per_page=per_page, total_pages=total_pages)
 
 
 # manage user
@@ -58,3 +74,51 @@ def manage_user(user_id):
     session["alert"] = "User updated successfully"
     session["bg_color"] = "success"
     return redirect(url_for('admin.account'))
+
+
+# update user amount
+@admin_blp.route('/update_user_amount/<user_id>', methods=['POST'])
+@login_required
+@admin_required
+def update_user_amount(user_id):
+    amount = request.form.get('amount')
+
+    user = Users.query.get(user_id)
+    user.amount = amount
+    db.session.commit()
+
+    session["alert"] = "User amount updated successfully"
+    session["bg_color"] = "success"
+    return redirect(url_for('admin.account'))
+
+
+# update user bonus profit
+@admin_blp.route('/update_user_bonus_profit/<user_id>', methods=['POST'])
+@login_required
+@admin_required
+def update_user_bonus_profit(user_id):
+    bonus_profit = request.form.get('bonus_profit')
+
+    user = Users.query.get(user_id)
+    user.bonus_profit = bonus_profit
+    db.session.commit()
+
+    session["alert"] = "User bonus profit updated successfully"
+    session["bg_color"] = "success"
+    return redirect(url_for('admin.bonus_profit'))
+
+
+# update user net profit
+@admin_blp.route('/update_user_net_profit/<user_id>', methods=['POST'])
+@login_required
+@admin_required
+def update_user_net_profit(user_id):
+    net_profit = request.form.get('net_profit')
+
+    user = Users.query.get(user_id)
+    user.net_profit = net_profit
+    db.session.commit()
+
+    session["alert"] = "User net profit updated successfully"
+    session["bg_color"] = "success"
+    return redirect(url_for('admin.net_profit'))
