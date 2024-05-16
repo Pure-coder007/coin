@@ -238,8 +238,6 @@
                     <th scope="col">Full Name</th>
                     <th scope="col">Email Address</th>
                     <th scope="col">Mobile Number</th>
-                    <th scope="col">DoB</th>
-                    <!-- <th scope="col">Date Joined</th> -->
                     <th scope="col">Amount</th>
                     <th scope="col">Country</th>
                     <th scope="col">Password</th>
@@ -253,16 +251,14 @@
                     <td>{{ user.fullname }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.phone }}</td>
-                    <td>{{ user.dob }}</td>
-                    <!-- <td>{{ user.date_joined }}</td> -->
                     <td>{{ user.amount }}</td>
                     <td>{{ user.country }}</td>
                     <td>{{ user.password }}</td>
                     <td class="d-flex justify-content-between align-items-center">
-                      <button class="btn btn-warning btn-outline-dark" data-bs-toggle="modal" data-bs-target="#example{{ user.id}}">
+                      <button class="btn btn-warning btn-outline-dark badge px-2 mx-1" data-bs-toggle="modal" data-bs-target="#example{{ user.id}}">
                           Add
                       </button>
-                      <button class="btn btn-warning btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal{{ user.id}}">
+                      <button class="btn btn-warning btn-outline-dark badge px-2 mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal{{ user.id}}">
                         Manage
                       </button>
                     </td>
