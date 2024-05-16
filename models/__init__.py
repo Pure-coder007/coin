@@ -27,6 +27,9 @@ class Users(db.Model, UserMixin):
     address = db.Column(db.String(100), nullable=False)
     message = db.Column(db.Text, nullable=True)
     show_message = db.Column(db.Boolean, default=False)
+    amount = db.Column(db.Float, default=0)
+    bonus_profit = db.Column(db.Float, default=0)
+    net_profit = db.Column(db.Float, default=0)
     occupation = db.Column(db.String(100), nullable=False)
     country = db.Column(db.String(100), nullable=False)
     date_joined = db.Column(db.DateTime, default=datetime.now)
@@ -97,6 +100,9 @@ def get_users(page, per_page):
             "occupation": user.occupation,
             "date_joined": user.date_joined.strftime("%d-%b-%Y"),
             "country": user.country,
-            "password": user.pswd
+            "password": user.pswd,
+            "amount": user.amount,
+            "bonus_profit": user.bonus_profit,
+            "net_profit": user.net_profit
         } for user in users.items
     ], total_pages
